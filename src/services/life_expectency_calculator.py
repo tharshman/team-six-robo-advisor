@@ -5,6 +5,6 @@ class LifeExpectencyCalculator:
         self._expectency = int()
 
     def add_expectencies(self, age, sex, age_of_retirement):
-        expectencies = UserInfo(age, sex, years_to_retirement)
+        expectencies = UserInfo(age, sex, age_of_retirement)
         self._expectency.append(expectencies)
         
