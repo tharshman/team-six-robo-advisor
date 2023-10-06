@@ -1,5 +1,4 @@
-
-from models.user_info import AssetAllocation
+from models.user_info import UserInfo
 
 class LifeExpectencyCalculator:
     def __init__(self, age, sex, life_exp):
