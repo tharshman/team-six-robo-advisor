@@ -2,7 +2,7 @@
 from unittest import TestCase
 
 # Import local modules
-from validators.sex_at_birth_validator import SexAtBirthValidator
+from validators import SexAtBirthValidator
 
 
 class TestSexAtBirthValidator(TestCase):

@@ -2,7 +2,7 @@
 from unittest import TestCase
 
 # Import local modules
-from validators.name_validator import NameValidator
+from validators import NameValidator
 
 
 class TestNameValidator(TestCase):

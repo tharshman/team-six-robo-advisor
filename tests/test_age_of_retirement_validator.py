@@ -2,7 +2,7 @@
 from unittest import TestCase
 
 # Import local modules
-from validators.age_of_retirement_validator import AgeOfRetirementValidator
+from validators import AgeOfRetirementValidator
 
 
 class TestAgeOfRetirementValidator(TestCase):
