@@ -1,4 +1,4 @@
-from models.asset_allocation_table import AssetAllocationTable
+from models import AssetAllocationTable
 from unittest import TestCase
 
 
