@@ -12,5 +12,5 @@ class AssetAllocationTable:
     def get_allocation_count(self):
         return len(self._allocations)
 
-    def render_table(self):
-        return ""
+    def __str__(self):
+        return "test"
