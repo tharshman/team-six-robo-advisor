@@ -10,16 +10,19 @@ class TestSexAtBirthValidator(TestCase):
         valid_sexes = ['m', 'F', 'Male', 'FEMALE']
         for s in valid_sexes:
             with self.subTest(msg=f"Validate {s} with SexAtBirthValidator", s=s):
-                result, message = SexAtBirthValidator().validate(s)
+                validator = SexAtBirthValidator(s)
+                result, message = validator.validate()
                 self.assertTrue(result)
                 self.assertIsNone(message)
 
     def test_with_empty_sex(self):
-        result, message = SexAtBirthValidator().validate(" ")
+        validator = SexAtBirthValidator(" ")
+        result, message = validator.validate()
         self.assertFalse(result)
         self.assertEqual(message, "Sex is empty")
 
     def test_with_too_long_sex(self):
-        result, message = SexAtBirthValidator().validate("alien")
+        validator = SexAtBirthValidator("alien")
+        result, message = validator.validate()
         self.assertFalse(result)
         self.assertEqual(message, "Invalid value for sex")

@@ -1,7 +1,12 @@
-class SexAtBirthValidator:
-    @staticmethod
-    def validate(value: str) -> (bool, str):
-        clean_value = value.strip().lower()
+from validators import AbstractValidator
+
+
+class SexAtBirthValidator(AbstractValidator):
+    def __init__(self, value):
+        self._value = value
+
+    def validate(self) -> (bool, str):
+        clean_value = self._value.strip().lower()
 
         if len(clean_value) == 0:
             return False, "Sex is empty"
