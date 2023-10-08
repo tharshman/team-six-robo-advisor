@@ -1,1 +1,1 @@
-from .life_expectency_calculator import LifeExpectencyCalculator
+from .life_expectency_calculator import LifeExpectancyCalculator
