@@ -1,10 +1,19 @@
-from models.user_info import UserInfo
+from models import UserInfo
 
-class LifeExpectencyCalculator:
-    def __init__(self):
-        self._expectency = int()
 
-    def add_expectencies(self, age, sex, age_of_retirement):
-        expectencies = UserInfo(age, sex, age_of_retirement)
-        self._expectency.append(expectencies)
-        
+class LifeExpectancyCalculator:
+    def __init__(self, user_info: UserInfo):
+        self._expectancy = int()
+        self._user_info = user_info
+
+    def add_expectancies(self, age, sex, age_of_retirement):
+        expectancies = UserInfo(age, sex, age_of_retirement)
+        self._expectancy.append(expectancies)
+
+    def calculate_for_user(self) -> UserInfo:
+        # TODO: perform calculation with actuary data, append it to user_info and return user_info object
+        return self._user_info
+
+    def __load_actuary_data(self):
+        # TODO: load actuary data
+        pass

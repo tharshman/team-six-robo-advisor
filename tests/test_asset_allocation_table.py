@@ -12,6 +12,6 @@ class TestAssetAllocationTable(TestCase):
         table = AssetAllocationTable()
         self.assertEqual(table.get_allocation_count(), 0)
 
-    def test_render_table(self):
+    def test_convert_to_string(self):
         table = AssetAllocationTable()
-        self.assertEqual(table.render_table(), "")
+        self.assertEqual(str(table), "test")

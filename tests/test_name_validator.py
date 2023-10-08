@@ -7,16 +7,19 @@ from validators import NameValidator
 
 class TestNameValidator(TestCase):
     def test_with_valid_name(self):
-        result, message = NameValidator().validate("Vincent Bortone")
+        validator = NameValidator("Vincent Bortone")
+        result, message = validator.validate()
         self.assertTrue(result)
         self.assertIsNone(message)
 
     def test_with_empty_name(self):
-        result, message = NameValidator().validate(" ")
+        validator = NameValidator(" ")
+        result, message = validator.validate()
         self.assertFalse(result)
         self.assertEqual(message, "Name is empty")
 
     def test_with_too_long_name(self):
-        result, message = NameValidator().validate("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        validator = NameValidator("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        result, message = validator.validate()
         self.assertFalse(result)
         self.assertEqual(message, "Name is too long")
