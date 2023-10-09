@@ -1,4 +1,4 @@
-from models.asset_allocation import AssetAllocation
+from models import AssetAllocation
 
 
 class AssetAllocationTable:
