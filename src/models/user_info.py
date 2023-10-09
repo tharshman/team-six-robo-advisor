@@ -1,5 +1,5 @@
 class UserInfo:
-    def __init__(self, name, age, sex, age_of_retirement):
+    def __init__(self, name, age, sex, age_of_retirement, age_of_life_expectancy = 0):
         self._name = name
         self._age = age
         self._sex_at_birth = sex
