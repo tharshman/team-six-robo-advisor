@@ -24,18 +24,17 @@ def get_user_info_from_inputs() -> UserInfo:
     current_age = int(age)
 
     sex_at_birth = get_input("Please enter your sex assigned at birth (M/F):", ValidatorType.SEX_AT_BIRTH)
+    if sex_at_birth.lower()[:1] == "m":
+        current_sex_at_birth = SexAtBirth.MALE
+    else:
+        current_sex_at_birth = SexAtBirth.FEMALE
 
     age_of_retirement = get_input("Please enter your expected age of retirement (only as a whole number):",
                                   ValidatorType.AGE_OF_RETIREMENT, current_age)
 
     current_age_of_retirement = int(age_of_retirement)
 
-    if sex_at_birth.lower()[:1] == "m":
-        sex = SexAtBirth.MALE
-    else:
-        sex = SexAtBirth.FEMALE
-
-    return UserInfo(name, current_age, sex, current_age_of_retirement)
+    return UserInfo(name, current_age, current_sex_at_birth, current_age_of_retirement)
 
 
 if __name__ == "__main__":
