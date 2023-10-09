@@ -6,4 +6,25 @@ class AssetAllocationStrategizer:
         self._user_info = user_info
 
     def calculate_for_user(self) -> AssetAllocationTable:
-        pass
+        # Calculate 5 year increments
+        left_bound = self.__get_left_bound()
+        right_bound = self.__get_right_bound()
+
+        # Use Bogle Asset Allocation formula
+        table = AssetAllocationTable()
+        for i in range(left_bound, right_bound + 1, 5):
+            table.add_allocation(i - self._user_info.age_of_retirement, 100-i, i)
+
+        return table
+
+    def __get_left_bound(self):
+        x = self._user_info.age_of_retirement
+        while x >= self._user_info.age:
+            x -= 5
+        return x
+
+    def __get_right_bound(self):
+        x = self._user_info.age_of_retirement
+        while x <= self._user_info.age_of_life_expectancy:
+            x += 5
+        return x
