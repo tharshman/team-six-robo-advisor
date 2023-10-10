@@ -10,8 +10,10 @@ class SexAtBirthValidator(AbstractValidator):
 
         if clean_value == "m" \
                 or clean_value == "male" \
+                or clean_value == "man" \
                 or clean_value == "f" \
-                or clean_value == "female":
+                or clean_value == "female"\
+                or clean_value == "woman":
             return True, None
 
         return False, "Invalid value for sex"
