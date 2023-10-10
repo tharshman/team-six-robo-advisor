@@ -38,12 +38,15 @@ def get_user_info_from_inputs() -> UserInfo:
 
 
 if __name__ == "__main__":
+    LIFE_EXPECTANCY_DATA_FILE = "life_expectancy_db.csv"
+
     user_info = get_user_info_from_inputs()
 
-    life_expectancy_calculator = LifeExpectancyCalculator(user_info)
+    life_expectancy_calculator = LifeExpectancyCalculator(user_info, LIFE_EXPECTANCY_DATA_FILE)
     user_info = life_expectancy_calculator.calculate_for_user()
 
     asset_allocation_strategizer = AssetAllocationStrategizer(user_info)
     result_table = asset_allocation_strategizer.calculate_for_user()
 
-    print(result_table)
+    for row in result_table:
+        print(f"YTR: {row.years_to_retirement}   Stock: {row.percent_in_stock}   Bonds: {row.percent_in_bonds}")

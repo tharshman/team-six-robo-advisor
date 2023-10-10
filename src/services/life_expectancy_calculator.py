@@ -3,10 +3,9 @@ from models import UserInfo, SexAtBirth
 
 
 class LifeExpectancyCalculator:
-    LIFE_EXPECTANCY_DATA_FILE = "life_expectancy_db.csv"
-
-    def __init__(self, user_info: UserInfo):
+    def __init__(self, user_info: UserInfo, actuary_data_file_path: str):
         self._user_info = user_info
+        self._actuary_data_file_path = actuary_data_file_path
         self._actuary_table = self.__load_actuary_data()
 
     def calculate_for_user(self) -> UserInfo:
@@ -26,7 +25,7 @@ class LifeExpectancyCalculator:
         return self._user_info
 
     def __load_actuary_data(self) -> list:
-        with open(self.LIFE_EXPECTANCY_DATA_FILE, "r") as file:
+        with open(self._actuary_data_file_path, "r") as file:
             reader = csv.DictReader(file)
             table = list(reader)
         return table
