@@ -2,11 +2,8 @@ from validators import AbstractValidator
 
 
 class NameValidator(AbstractValidator):
-    def __init__(self, value):
-        self._value = value
-
-    def validate(self) -> (bool, str):
-        trimmed_name = self._value.strip()
+    def validate(self, value: str, second_value=None) -> (bool, str):
+        trimmed_name = value.strip()
 
         if len(trimmed_name) == 0:
             return False, "Name is empty"

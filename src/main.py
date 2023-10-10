@@ -7,10 +7,10 @@ from models import UserInfo, SexAtBirth
 def get_input(prompt: str, validator_type: ValidatorType, second_value: any = None) -> str:
     value_is_valid = False
     value = None
-    validator = ValidatorFactory.get_validator(validator_type, second_value)
+    validator = ValidatorFactory.get_validator(validator_type)
     while not value_is_valid:
         value = input(prompt)
-        value_is_valid, error_message = validator.validate()
+        value_is_valid, error_message = validator.validate(value, second_value)
         if not value_is_valid:
             print(error_message)
             print("Let's try that again")

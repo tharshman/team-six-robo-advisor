@@ -4,15 +4,15 @@ from validators import NameValidator, AgeValidator, AgeOfRetirementValidator, Ab
 
 class ValidatorFactory:
     @staticmethod
-    def get_validator(validator_type: ValidatorType, value: str, second_value: any = None) -> AbstractValidator:
+    def get_validator(validator_type: ValidatorType) -> AbstractValidator:
         match validator_type:
             case ValidatorType.NAME:
-                return NameValidator(value)
+                return NameValidator()
             case ValidatorType.AGE:
-                return AgeValidator(value)
+                return AgeValidator()
             case ValidatorType.SEX_AT_BIRTH:
-                return SexAtBirthValidator(value)
+                return SexAtBirthValidator()
             case ValidatorType.AGE_OF_RETIREMENT:
-                return AgeOfRetirementValidator(value, int(second_value))
+                return AgeOfRetirementValidator()
             case _:
-                raise ValueError()
+                raise ValueError("Invalid Validator Type")
