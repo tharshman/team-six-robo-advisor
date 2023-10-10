@@ -20,12 +20,24 @@ class AssetAllocationStrategizer:
 
     def __get_left_bound(self):
         x = self._user_info.age_of_retirement
+
+        # Work backwards until we're close to current age
         while x >= self._user_info.age:
             x -= 5
+
+        # Go back one step if we passed age
+        if x < self._user_info.age:
+            x += 5
         return x
 
     def __get_right_bound(self):
         x = self._user_info.age_of_retirement
-        while x <= self._user_info.life_expectancy:
+
+        # Work backwards until we're close to expected age of death
+        while x <= self._user_info.expected_age_of_death:
             x += 5
+
+        # Go back one step if we passed age
+        if x > self._user_info.expected_age_of_death:
+            x -= 5
         return x
