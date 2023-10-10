@@ -17,6 +17,10 @@ class LifeExpectancyCalculator:
                 else:
                     self._user_info.age_of_life_expectancy = int(row['Female'])
                 break
+
+        if self._user_info.age_of_life_expectancy == 0:
+            raise ValueError(f"No data available for age {self._user_info.age}")
+
         return self._user_info
 
     def __load_actuary_data(self) -> list:
