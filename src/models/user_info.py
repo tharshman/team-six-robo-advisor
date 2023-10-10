@@ -34,12 +34,12 @@ class UserInfo:
         self._age_of_retirement = value
 
     @property
-    def age_of_life_expectancy(self):
-        return self._age_of_life_expectancy
+    def life_expectancy(self):
+        return self._life_expectancy
 
-    @age_of_life_expectancy.setter
-    def age_of_life_expectancy(self, value):
-        self._age_of_life_expectancy = value
+    @life_expectancy.setter
+    def life_expectancy(self, value):
+        self._life_expectancy = value
 
     @property
     def sex_at_birth(self):
