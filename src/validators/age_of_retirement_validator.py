@@ -4,10 +4,14 @@ from validators import AbstractValidator
 class AgeOfRetirementValidator(AbstractValidator):
     def validate(self, value: str, second_value) -> (bool, str):
         age_of_retirement = value.strip()
-        current_age = int(second_value)
 
         if len(age_of_retirement) == 0:
             return False, "Age of retirement is empty"
+
+        try:
+            current_age = int(second_value)
+        except ValueError:
+            return False, "Your current age should be a whole number"
 
         try:
             real_age_of_retirement = int(age_of_retirement)
