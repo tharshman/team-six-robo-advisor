@@ -29,3 +29,9 @@ class TestAgeOfRetirementValidator(TestCase):
         result, message = validator.validate("30", 49)
         self.assertFalse(result)
         self.assertEqual(message, "The retirement age needs to be in the future")
+
+    def test_with_out_of_range_value(self):
+        validator = AgeOfRetirementValidator()
+        result, message = validator.validate("700", 49)
+        self.assertFalse(result)
+        self.assertEqual(message, "Age of retirement range needs to be between 21 and 100")
