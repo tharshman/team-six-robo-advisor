@@ -1,43 +1,31 @@
-from models import UserInfo
+import csv
+from models import UserInfo, SexAtBirth
 
 
 class LifeExpectancyCalculator:
-    def __init__(self, user_info: UserInfo):
-        self._expectancy = int()
+    def __init__(self, user_info: UserInfo, actuary_data_file_path: str):
         self._user_info = user_info
-
-    def add_expectancies(self, age, sex, age_of_retirement):
-        expectancies = UserInfo(age, sex, age_of_retirement)
-        self._expectancy.append(expectancies)
+        self._actuary_data_file_path = actuary_data_file_path
+        self._actuary_table = self.__load_actuary_data()
 
     def calculate_for_user(self) -> UserInfo:
-            for row in table:
-                if int(row['Age']) == age:
-                    if gender == 'Male':
-                        return float(row['Male'])
-                    else:
-                        return float(row['Female'])
-            return self._user_info
+        for row in self._actuary_table:
+            if int(row["Age"]) == self._user_info.age:
+                if self._user_info.sex_at_birth == SexAtBirth.MALE:
+                    self._user_info.life_expectancy = int(float(row["Male"]))
+                elif self._user_info.sex_at_birth == SexAtBirth.FEMALE:
+                    self._user_info.life_expectancy = int(float(row["Female"]))
+                else:
+                    raise ValueError(f"No data available for sex {self._user_info.sex_at_birth}")
+                break
 
-    def load_actuary_data(self):
-        with open(filename, 'r') as file:
+        if self._user_info.life_expectancy == 0:
+            raise ValueError(f"No data available for age {self._user_info.age}")
+
+        return self._user_info
+
+    def __load_actuary_data(self) -> list:
+        with open(self._actuary_data_file_path, "r") as file:
             reader = csv.DictReader(file)
             table = list(reader)
         return table
-        
-    def main():
-        filename = "Life Expectancy Male and Female 30 - 100.csv"
-        table = load_actuary_data(filename)
-
-        age = int(input("Enter age: "))
-        gender = input("Enter sex at birth (Male/Female): ").capitalize()
-
-        life_expectancy = calculate_for_user(age, gender, table)
-
-        if life_expectancy is not None:
-            print(f"Estimated life expectancy for a {gender} of age {age} is {life_expectancy} years.")
-        else:
-            print("Data not available for the given input.")
-
-    if __name__ == "__main__":
-        main()

@@ -1,10 +1,13 @@
+from models import SexAtBirth
+
+
 class UserInfo:
-    def __init__(self, name, age, sex, age_of_retirement, age_of_life_expectancy = 0):
+    def __init__(self, name: str, age: int, sex: SexAtBirth, age_of_retirement: int, life_expectancy=0):
         self._name = name
         self._age = age
         self._sex_at_birth = sex
         self._age_of_retirement = age_of_retirement
-        self._age_of_life_expectancy = 0
+        self._life_expectancy = life_expectancy
 
     @property
     def name(self):
@@ -31,12 +34,12 @@ class UserInfo:
         self._age_of_retirement = value
 
     @property
-    def age_of_life_expectancy(self):
-        return self._age_of_life_expectancy
+    def life_expectancy(self):
+        return self._life_expectancy
 
-    @age_of_life_expectancy.setter
-    def age_of_life_expectancy(self, value):
-        self._age_of_life_expectancy = value
+    @life_expectancy.setter
+    def life_expectancy(self, value):
+        self._life_expectancy = value
 
     @property
     def sex_at_birth(self):
@@ -45,3 +48,7 @@ class UserInfo:
     @sex_at_birth.setter
     def sex_at_birth(self, value):
         self._sex_at_birth = value
+
+    @property
+    def expected_age_of_death(self):
+        return self._age + self._life_expectancy
