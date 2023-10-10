@@ -18,18 +18,18 @@ def get_input(prompt: str, validator_type: ValidatorType, second_value: any = No
 
 
 def get_user_info_from_inputs() -> UserInfo:
-    name = get_input("Please enter your name:", ValidatorType.NAME)
+    name = get_input("Please enter your name: ", ValidatorType.NAME)
 
-    age = get_input("Please enter your age (only as a whole number):", ValidatorType.AGE)
+    age = get_input("Please enter your age (only as a whole number): ", ValidatorType.AGE)
     current_age = int(age)
 
-    sex_at_birth = get_input("Please enter your sex assigned at birth (M/F):", ValidatorType.SEX_AT_BIRTH)
+    sex_at_birth = get_input("Please enter your sex assigned at birth (M/F): ", ValidatorType.SEX_AT_BIRTH)
     if sex_at_birth.lower()[:1] == "m":
         current_sex_at_birth = SexAtBirth.MALE
     else:
         current_sex_at_birth = SexAtBirth.FEMALE
 
-    age_of_retirement = get_input("Please enter your expected age of retirement (only as a whole number):",
+    age_of_retirement = get_input("Please enter your expected age of retirement (only as a whole number): ",
                                   ValidatorType.AGE_OF_RETIREMENT, current_age)
 
     current_age_of_retirement = int(age_of_retirement)
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     result_table = asset_allocation_strategizer.calculate_for_user()
 
     for row in result_table:
-        print(f"YTR: {row.years_to_retirement}   Stock: {row.percent_in_stock}   Bonds: {row.percent_in_bonds}")
+        print(f"YTR:\t{row.years_to_retirement}\tStock: {row.percent_in_stock}\tBonds: {row.percent_in_bonds}")
