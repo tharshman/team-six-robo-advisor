@@ -18,6 +18,9 @@ class AgeOfRetirementValidator(AbstractValidator):
         except ValueError:
             return False, "Age of retirement should be a whole number"
 
+        if real_age_of_retirement < 21 or real_age_of_retirement > 100:
+            return False, "Age of retirement range needs to be between 21 and 100"
+
         if real_age_of_retirement <= current_age:
             return False, "The retirement age needs to be in the future"
 
