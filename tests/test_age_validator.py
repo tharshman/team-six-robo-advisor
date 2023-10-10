@@ -23,3 +23,9 @@ class TestAgeValidator(TestCase):
         result, message = validator.validate("vfb")
         self.assertFalse(result)
         self.assertEqual(message, "Value is not an integer")
+
+    def test_with_invalid_range(self):
+        validator = AgeValidator()
+        result, message = validator.validate("700")
+        self.assertFalse(result)
+        self.assertEqual(message, "Age range needs to be between 21 and 100")
