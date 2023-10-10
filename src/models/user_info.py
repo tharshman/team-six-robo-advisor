@@ -48,3 +48,7 @@ class UserInfo:
     @sex_at_birth.setter
     def sex_at_birth(self, value):
         self._sex_at_birth = value
+
+    @property
+    def expected_age_of_death(self):
+        return self._age + self._life_expectancy
