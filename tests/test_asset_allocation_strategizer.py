@@ -18,3 +18,4 @@ class TestAssetAllocationStrategizer(TestCase):
         sut = AssetAllocationStrategizer(user)
         table = sut.calculate_for_user()
         self.assertEqual(7, table.get_allocation_count())
+
